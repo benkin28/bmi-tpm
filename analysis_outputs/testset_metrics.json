@@ -1,0 +1,12 @@
+{
+  "n_test_samples": 100,
+  "n_posterior_samples": 500,
+  "pixel_accuracy": {
+    "mean": 0.8717136094674557,
+    "std": 0.04759305109862565
+  },
+  "average_entropy_bits": {
+    "mean": 0.1034003272652626,
+    "std": 0.02698829211294651
+  }
+}

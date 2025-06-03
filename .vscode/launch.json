@@ -1,0 +1,27 @@
+{
+  "configurations": [
+    {
+      "name": "Python Debugger: Current File",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${file}",
+      "console": "integratedTerminal"
+    },
+
+    {
+      "name": "main.py",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "./main.py",
+      "console": "integratedTerminal",
+      "justMyCode": true
+    },
+    {
+      "name": "cgApprox",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "./model/pde/cgApprox.py",
+      "justMyCode": false
+    }
+  ]
+}

@@ -1,0 +1,502 @@
+[
+  {
+    "iteration": 0,
+    "mean_entropy": 0.10756257176399231,
+    "timestamp": "2025-05-15T09:41:04"
+  },
+  {
+    "iteration": 1,
+    "mean_entropy": 0.10899852961301804,
+    "timestamp": "2025-05-15T09:43:48"
+  },
+  {
+    "iteration": 2,
+    "mean_entropy": 0.06821422278881073,
+    "timestamp": "2025-05-15T09:46:32"
+  },
+  {
+    "iteration": 3,
+    "mean_entropy": 0.05540377274155617,
+    "timestamp": "2025-05-15T09:48:54"
+  },
+  {
+    "iteration": 4,
+    "mean_entropy": 0.08226663619279861,
+    "timestamp": "2025-05-15T09:51:39"
+  },
+  {
+    "iteration": 5,
+    "mean_entropy": 0.07571841031312943,
+    "timestamp": "2025-05-15T09:54:24"
+  },
+  {
+    "iteration": 6,
+    "mean_entropy": 0.08841703087091446,
+    "timestamp": "2025-05-15T09:57:00"
+  },
+  {
+    "iteration": 7,
+    "mean_entropy": 0.10688991099596024,
+    "timestamp": "2025-05-15T09:59:31"
+  },
+  {
+    "iteration": 8,
+    "mean_entropy": 0.07567080855369568,
+    "timestamp": "2025-05-15T10:02:12"
+  },
+  {
+    "iteration": 9,
+    "mean_entropy": 0.07767753303050995,
+    "timestamp": "2025-05-15T10:04:54"
+  },
+  {
+    "iteration": 10,
+    "mean_entropy": 0.08041933178901672,
+    "timestamp": "2025-05-15T10:07:18"
+  },
+  {
+    "iteration": 11,
+    "mean_entropy": 0.08443696796894073,
+    "timestamp": "2025-05-15T10:10:00"
+  },
+  {
+    "iteration": 12,
+    "mean_entropy": 0.056616444140672684,
+    "timestamp": "2025-05-15T10:12:43"
+  },
+  {
+    "iteration": 13,
+    "mean_entropy": 0.09425943344831467,
+    "timestamp": "2025-05-15T10:15:26"
+  },
+  {
+    "iteration": 14,
+    "mean_entropy": 0.10760270059108734,
+    "timestamp": "2025-05-15T10:17:50"
+  },
+  {
+    "iteration": 15,
+    "mean_entropy": 0.09151619672775269,
+    "timestamp": "2025-05-15T10:20:33"
+  },
+  {
+    "iteration": 16,
+    "mean_entropy": 0.05953136831521988,
+    "timestamp": "2025-05-15T10:23:19"
+  },
+  {
+    "iteration": 17,
+    "mean_entropy": 0.06416776776313782,
+    "timestamp": "2025-05-15T10:26:00"
+  },
+  {
+    "iteration": 18,
+    "mean_entropy": 0.07439493387937546,
+    "timestamp": "2025-05-15T10:28:23"
+  },
+  {
+    "iteration": 19,
+    "mean_entropy": 0.08570374548435211,
+    "timestamp": "2025-05-15T10:31:03"
+  },
+  {
+    "iteration": 20,
+    "mean_entropy": 0.11065079271793365,
+    "timestamp": "2025-05-15T10:33:47"
+  },
+  {
+    "iteration": 21,
+    "mean_entropy": 0.10526353120803833,
+    "timestamp": "2025-05-15T10:36:32"
+  },
+  {
+    "iteration": 22,
+    "mean_entropy": 0.14491762220859528,
+    "timestamp": "2025-05-15T10:38:54"
+  },
+  {
+    "iteration": 23,
+    "mean_entropy": 0.0656440407037735,
+    "timestamp": "2025-05-15T10:41:39"
+  },
+  {
+    "iteration": 24,
+    "mean_entropy": 0.057570453733205795,
+    "timestamp": "2025-05-15T10:44:23"
+  },
+  {
+    "iteration": 25,
+    "mean_entropy": 0.10396758466959,
+    "timestamp": "2025-05-15T10:46:54"
+  },
+  {
+    "iteration": 26,
+    "mean_entropy": 0.034755412489175797,
+    "timestamp": "2025-05-15T10:49:29"
+  },
+  {
+    "iteration": 27,
+    "mean_entropy": 0.11467142403125763,
+    "timestamp": "2025-05-15T10:52:14"
+  },
+  {
+    "iteration": 28,
+    "mean_entropy": 0.11414900422096252,
+    "timestamp": "2025-05-15T10:54:57"
+  },
+  {
+    "iteration": 29,
+    "mean_entropy": 0.07194610685110092,
+    "timestamp": "2025-05-15T10:57:24"
+  },
+  {
+    "iteration": 30,
+    "mean_entropy": 0.11103066056966782,
+    "timestamp": "2025-05-15T11:00:08"
+  },
+  {
+    "iteration": 31,
+    "mean_entropy": 0.08964870125055313,
+    "timestamp": "2025-05-15T11:02:51"
+  },
+  {
+    "iteration": 32,
+    "mean_entropy": 0.07654915004968643,
+    "timestamp": "2025-05-15T11:05:35"
+  },
+  {
+    "iteration": 33,
+    "mean_entropy": 0.10878798365592957,
+    "timestamp": "2025-05-15T11:07:57"
+  },
+  {
+    "iteration": 34,
+    "mean_entropy": 0.05663755536079407,
+    "timestamp": "2025-05-15T11:10:40"
+  },
+  {
+    "iteration": 35,
+    "mean_entropy": 0.062020041048526764,
+    "timestamp": "2025-05-15T11:13:22"
+  },
+  {
+    "iteration": 36,
+    "mean_entropy": 0.0484134778380394,
+    "timestamp": "2025-05-15T11:16:06"
+  },
+  {
+    "iteration": 37,
+    "mean_entropy": 0.0835588201880455,
+    "timestamp": "2025-05-15T11:18:27"
+  },
+  {
+    "iteration": 38,
+    "mean_entropy": 0.069849394261837,
+    "timestamp": "2025-05-15T11:21:09"
+  },
+  {
+    "iteration": 39,
+    "mean_entropy": 0.06246527284383774,
+    "timestamp": "2025-05-15T11:23:54"
+  },
+  {
+    "iteration": 40,
+    "mean_entropy": 0.09808313101530075,
+    "timestamp": "2025-05-15T11:26:31"
+  },
+  {
+    "iteration": 41,
+    "mean_entropy": 0.17249280214309692,
+    "timestamp": "2025-05-15T11:28:59"
+  },
+  {
+    "iteration": 42,
+    "mean_entropy": 0.07852934300899506,
+    "timestamp": "2025-05-15T11:31:42"
+  },
+  {
+    "iteration": 43,
+    "mean_entropy": 0.06952176243066788,
+    "timestamp": "2025-05-15T11:34:26"
+  },
+  {
+    "iteration": 44,
+    "mean_entropy": 0.10910113900899887,
+    "timestamp": "2025-05-15T11:36:49"
+  },
+  {
+    "iteration": 45,
+    "mean_entropy": 0.12474528700113297,
+    "timestamp": "2025-05-15T11:39:33"
+  },
+  {
+    "iteration": 46,
+    "mean_entropy": 0.08051231503486633,
+    "timestamp": "2025-05-15T11:42:17"
+  },
+  {
+    "iteration": 47,
+    "mean_entropy": 0.10469086468219757,
+    "timestamp": "2025-05-15T11:44:58"
+  },
+  {
+    "iteration": 48,
+    "mean_entropy": 0.08195856958627701,
+    "timestamp": "2025-05-15T11:47:20"
+  },
+  {
+    "iteration": 49,
+    "mean_entropy": 0.12816056609153748,
+    "timestamp": "2025-05-15T11:50:05"
+  },
+  {
+    "iteration": 50,
+    "mean_entropy": 0.07547762244939804,
+    "timestamp": "2025-05-15T11:52:48"
+  },
+  {
+    "iteration": 51,
+    "mean_entropy": 0.09065917879343033,
+    "timestamp": "2025-05-15T11:55:31"
+  },
+  {
+    "iteration": 52,
+    "mean_entropy": 0.1019359901547432,
+    "timestamp": "2025-05-15T11:57:55"
+  },
+  {
+    "iteration": 53,
+    "mean_entropy": 0.12245384603738785,
+    "timestamp": "2025-05-15T12:00:38"
+  },
+  {
+    "iteration": 54,
+    "mean_entropy": 0.12512408196926117,
+    "timestamp": "2025-05-15T12:03:21"
+  },
+  {
+    "iteration": 55,
+    "mean_entropy": 0.0613529235124588,
+    "timestamp": "2025-05-15T12:06:05"
+  },
+  {
+    "iteration": 56,
+    "mean_entropy": 0.0729798898100853,
+    "timestamp": "2025-05-15T12:08:28"
+  },
+  {
+    "iteration": 57,
+    "mean_entropy": 0.06151376664638519,
+    "timestamp": "2025-05-15T12:11:09"
+  },
+  {
+    "iteration": 58,
+    "mean_entropy": 0.07016752660274506,
+    "timestamp": "2025-05-15T12:13:53"
+  },
+  {
+    "iteration": 59,
+    "mean_entropy": 0.1020577996969223,
+    "timestamp": "2025-05-15T12:16:27"
+  },
+  {
+    "iteration": 60,
+    "mean_entropy": 0.059147465974092484,
+    "timestamp": "2025-05-15T12:19:04"
+  },
+  {
+    "iteration": 61,
+    "mean_entropy": 0.09437260031700134,
+    "timestamp": "2025-05-15T12:21:47"
+  },
+  {
+    "iteration": 62,
+    "mean_entropy": 0.11619564890861511,
+    "timestamp": "2025-05-15T12:24:29"
+  },
+  {
+    "iteration": 63,
+    "mean_entropy": 0.14952118694782257,
+    "timestamp": "2025-05-15T12:26:53"
+  },
+  {
+    "iteration": 64,
+    "mean_entropy": 0.12150408327579498,
+    "timestamp": "2025-05-15T12:29:38"
+  },
+  {
+    "iteration": 65,
+    "mean_entropy": 0.07014670968055725,
+    "timestamp": "2025-05-15T12:32:19"
+  },
+  {
+    "iteration": 66,
+    "mean_entropy": 0.08826648443937302,
+    "timestamp": "2025-05-15T12:35:07"
+  },
+  {
+    "iteration": 67,
+    "mean_entropy": 0.10336916893720627,
+    "timestamp": "2025-05-15T12:37:33"
+  },
+  {
+    "iteration": 68,
+    "mean_entropy": 0.05171459913253784,
+    "timestamp": "2025-05-15T12:40:17"
+  },
+  {
+    "iteration": 69,
+    "mean_entropy": 0.07199966907501221,
+    "timestamp": "2025-05-15T12:43:04"
+  },
+  {
+    "iteration": 70,
+    "mean_entropy": 0.10491978377103806,
+    "timestamp": "2025-05-15T12:45:48"
+  },
+  {
+    "iteration": 71,
+    "mean_entropy": 0.08567550033330917,
+    "timestamp": "2025-05-15T12:48:12"
+  },
+  {
+    "iteration": 72,
+    "mean_entropy": 0.13241490721702576,
+    "timestamp": "2025-05-15T12:50:56"
+  },
+  {
+    "iteration": 73,
+    "mean_entropy": 0.05788891017436981,
+    "timestamp": "2025-05-15T12:53:38"
+  },
+  {
+    "iteration": 74,
+    "mean_entropy": 0.15628854930400848,
+    "timestamp": "2025-05-15T12:56:05"
+  },
+  {
+    "iteration": 75,
+    "mean_entropy": 0.08490624278783798,
+    "timestamp": "2025-05-15T13:08:17"
+  },
+  {
+    "iteration": 76,
+    "mean_entropy": 0.08301330357789993,
+    "timestamp": "2025-05-15T14:00:18"
+  },
+  {
+    "iteration": 77,
+    "mean_entropy": 0.12975551187992096,
+    "timestamp": "2025-05-15T14:03:01"
+  },
+  {
+    "iteration": 78,
+    "mean_entropy": 0.08457133919000626,
+    "timestamp": "2025-05-15T14:05:44"
+  },
+  {
+    "iteration": 79,
+    "mean_entropy": 0.0851169154047966,
+    "timestamp": "2025-05-15T14:08:06"
+  },
+  {
+    "iteration": 80,
+    "mean_entropy": 0.08251022547483444,
+    "timestamp": "2025-05-15T14:10:50"
+  },
+  {
+    "iteration": 81,
+    "mean_entropy": 0.12073705345392227,
+    "timestamp": "2025-05-15T14:13:32"
+  },
+  {
+    "iteration": 82,
+    "mean_entropy": 0.056567512452602386,
+    "timestamp": "2025-05-15T14:16:12"
+  },
+  {
+    "iteration": 83,
+    "mean_entropy": 0.07030380517244339,
+    "timestamp": "2025-05-15T14:18:37"
+  },
+  {
+    "iteration": 84,
+    "mean_entropy": 0.09513521194458008,
+    "timestamp": "2025-05-15T14:21:19"
+  },
+  {
+    "iteration": 85,
+    "mean_entropy": 0.11348991096019745,
+    "timestamp": "2025-05-15T14:24:02"
+  },
+  {
+    "iteration": 86,
+    "mean_entropy": 0.10172116011381149,
+    "timestamp": "2025-05-15T14:26:26"
+  },
+  {
+    "iteration": 87,
+    "mean_entropy": 0.06069369986653328,
+    "timestamp": "2025-05-15T14:29:05"
+  },
+  {
+    "iteration": 88,
+    "mean_entropy": 0.05973198637366295,
+    "timestamp": "2025-05-15T14:31:49"
+  },
+  {
+    "iteration": 89,
+    "mean_entropy": 0.07525602728128433,
+    "timestamp": "2025-05-15T14:34:34"
+  },
+  {
+    "iteration": 90,
+    "mean_entropy": 0.09216447919607162,
+    "timestamp": "2025-05-15T14:36:56"
+  },
+  {
+    "iteration": 91,
+    "mean_entropy": 0.14346864819526672,
+    "timestamp": "2025-05-15T14:39:40"
+  },
+  {
+    "iteration": 92,
+    "mean_entropy": 0.05526609718799591,
+    "timestamp": "2025-05-15T14:42:22"
+  },
+  {
+    "iteration": 93,
+    "mean_entropy": 0.10645128041505814,
+    "timestamp": "2025-05-15T14:45:04"
+  },
+  {
+    "iteration": 94,
+    "mean_entropy": 0.11514107137918472,
+    "timestamp": "2025-05-15T14:47:25"
+  },
+  {
+    "iteration": 95,
+    "mean_entropy": 0.08281982690095901,
+    "timestamp": "2025-05-15T14:50:08"
+  },
+  {
+    "iteration": 96,
+    "mean_entropy": 0.08357971161603928,
+    "timestamp": "2025-05-15T14:52:51"
+  },
+  {
+    "iteration": 97,
+    "mean_entropy": 0.06877537071704865,
+    "timestamp": "2025-05-15T14:55:35"
+  },
+  {
+    "iteration": 98,
+    "mean_entropy": 0.09565766155719757,
+    "timestamp": "2025-05-15T14:57:58"
+  },
+  {
+    "iteration": 99,
+    "mean_entropy": 0.06152212247252464,
+    "timestamp": "2025-05-15T15:00:40"
+  }
+]
