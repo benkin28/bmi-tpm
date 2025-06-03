@@ -1,6 +1,6 @@
  Surrogate-Based Bayesian Inversion for Binary Parameter PDE Problems
 
-This repository contains code for Bennet Kinner's Bachelor's Thesis on **Surrogate-Based Bayesian Inversion for Binary Parameter PDE Problems**, which builds upon and extends the work from the PANIS repository.
+This repository contains code for Bennet Kinner's Bachelor's Thesis on **Bayesian Model-Based Inversion of Two-Phase Media Using Deep Surrogates**, which builds upon and extends the work from the PANIS repository.
 
 ## 📦 How to Set Up This Repository
 
