@@ -19,10 +19,7 @@ Download the datasets from the following Google Drive link:
 Place the datasets in the appropriate directory as specified by the code.
 
 ### 4. Install the Environment
-To install the required environment, use the `requirements.txt` file:  
-```bash
-pip install -r requirements.txt
-
+To install the required environment, use the `requirements.txt` file.
 
 ## Attribution
 
