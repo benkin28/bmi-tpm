@@ -1,28 +1,28 @@
-This repository contains code for Bennet Kinner's Bachelor's Thesis on **Bayesian Model-Based Inversion of Two-Phase Media Using Deep Surrogates**, which builds upon and extends the work from the PANIS repository.
+# Bayesian Model-Based Inversion of Two-Phase Media Using Deep Surrogates
+
+This repository contains the code for Bennet Kinner's Bachelor's Thesis on **Bayesian Model-Based Inversion of Two-Phase Media Using Deep Surrogates**, which builds upon and extends the work from the PANIS repository.
 
 ## 📦 How to Set Up This Repository
 
-To set up the repository correctly, please follow these steps:
+Follow these steps to set up the repository:
 
-### 1. Clone the Original PANIS Repository
+### 1. Clone the Repository
+Clone this repository to your local machine.
 
-Start by cloning the original PANIS repository, as this codebase builds upon it. 
+### 2. Copy PANIS Data
+Copy the "Datasets" and "data" folders from the original PANIS repository. Due to their large size, they are not included here.
 
+### 3. Download the Required Datasets
+Download the datasets from the following Google Drive link:  
+[Google Drive Datasets](https://drive.google.com/drive/folders/1vWrG3DzyMtUfGTtWiNwYlheSqqDhYaCv?usp=sharing)
 
-### 2️. Copy Code Files into the PANIS Directory
+Place the datasets in the appropriate directory as specified by the code.
 
-After cloning PANIS, copy the code files from this repository (bmi-tpm) into the top-level directory of the PANIS repository.
+### 4. Install the Environment
+To install the required environment, use the `requirements.txt` file:  
+```bash
+pip install -r requirements.txt
 
-This includes all .py files
-
-
-### 3️. Download the Required Datasets
-
-Download the datasets from the following Google Drive link:
-
-https://drive.google.com/drive/folders/1vWrG3DzyMtUfGTtWiNwYlheSqqDhYaCv?usp=sharing
-
-Place the datasets in the appropriate directory as required by the code.
 
 ## Attribution
 

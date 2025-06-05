@@ -49,12 +49,6 @@ H, W_grid = 65, 65               # Target resolution for fine-grid predictions
 with open("data.json", "r") as f:
     raw = json.load(f)
 
-# Load posterior mean of coarse grid for optional demo
-with open("posterior_X_mean.json", "r") as f:
-    posterior_X_mean = torch.tensor(json.load(f)["X_mean"],
-                                    dtype=torch.float32,
-                                    device=device)  # Shape: (17,17)
-
 # Convert data to tensors
 fineGrids   = torch.tensor(raw["x"]  [:selectionIndex],
                            dtype=torch.float32, device=device)  # (N,65,65)
@@ -256,16 +250,6 @@ with open("cNN/cnn_validation_metrics.json", "a") as f:
         confusion_matrix  = confmat.tolist(),
     )
     f.write(json.dumps(metrics, indent=2) + "\n")
-
-# ================================================================
-# Quick inference demo on posterior mean coarse grid (optional)
-# ================================================================
-with torch.no_grad():
-    coarse_demo = posterior_X_mean.unsqueeze(0).unsqueeze(0)  # (1,1,17,17)
-    logits_demo = model(coarse_demo)                          # (1,1,65,65)
-    prob_demo   = torch.sigmoid(logits_demo).squeeze().cpu()  # Probability map in [0,1]
-    var_demo    = prob_demo * (1 - prob_demo)                 # Variance estimation
-    pred_demo   = torch.sign(torch.tanh(logits_demo)).squeeze().cpu()  # Hard prediction {-1, +1}
 
 # Plot demo outputs
 plt.figure(figsize=(15,5))

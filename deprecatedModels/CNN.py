@@ -33,12 +33,6 @@ H, W_grid = 65, 65  # Adjust based on your data
 with open('data.json', 'r') as file:
     data = json.load(file)
 
-with open('posterior_X_mean.json', 'r') as file2:
-    posterior_X_mean = json.load(file2)
-    # print("posterior_X_mean:", posterior_X_mean.size())    
-    posterior_X_mean = posterior_X_mean['X_mean']
-    posterior_X_mean = torch.tensor(posterior_X_mean, dtype=torch.float32, device=device)
-
 fineGrids = data['x'][:selectionIndex]     # (N, H_fg, W_fg)
 coarseGrids = data['XCG'][:selectionIndex] # (N, H_cg, W_cg)
 print(len(coarseGrids))

@@ -492,101 +492,70 @@ def get_py_given_X_distribution(x, neuralNet, V, globalSigma):
     cov_matrix = cov_lowrank + sigma_scalar * torch.eye(dimOut, device=V.device)
     return dist.MultivariateNormal(mean, covariance_matrix=cov_matrix)
 # Load observed y values from JSON
-with open("Y_samples.json", "r") as f:
-    # y_samples1 = torch.tensor(json.load(f)["ys"]).reshape(1, 1,32*32)
-    # print("y_samples1:",y_samples1.shape)
-    sampSol, sampSolFenics, sampCond, sampX, sampYCoeff = pde.produceTestSample(Nx=numOfTestSamples, post=post)
-    sampX=sampX[:1].repeat(numOfTestSamples, 1)
-    x_testing_samples = sampX[:1].repeat(numOfTestSamples, 1)
-    xKLE = x_testing_samples[:1].view(1, 1, 24) #original small x
-    x = pde.gpExpansionExponentialParallel(xKLE) #add noise (sigma + random draw from standard normal distribution)
-    # Reshape xKLE and repeat for the specified number of test samples
-    xKLE = torch.reshape(xKLE, [xKLE.size(dim=0), 1, -1]) \
-        .repeat(numOfTestSamples, 1, 1) \
-        .to('cuda:0')
 
-    # Remove unnecessary dimensions from x
-    x = x.squeeze(1).to(device)
+sampSol, sampSolFenics, sampCond, sampX, sampYCoeff = pde.produceTestSample(Nx=numOfTestSamples, post=post)
+sampX=sampX[:1].repeat(numOfTestSamples, 1)
+x_testing_samples = sampX[:1].repeat(numOfTestSamples, 1)
+xKLE = x_testing_samples[:1].view(1, 1, 24) #original small x
+x = pde.gpExpansionExponentialParallel(xKLE) #add noise (sigma + random draw from standard normal distribution)
+# Reshape xKLE and repeat for the specified number of test samples
+xKLE = torch.reshape(xKLE, [xKLE.size(dim=0), 1, -1]) \
+    .repeat(numOfTestSamples, 1, 1) \
+    .to('cuda:0')
 
-    # Generate XCG using the neural network's xtoXCnn function
-    XCG = samples.neuralNet.xtoXCnn(xKLE).squeeze(1)
-    XCG = XCG[:1]
+# Remove unnecessary dimensions from x
+x = x.squeeze(1).to(device)
 
-    # Forward pass through the neural network
-    print("xKLE size: ", xKLE.size())
-    # ==================================================================
-# (NEW)  Build a clean y★  from the FEM solution of the *initial* x
-# ==================================================================
+# Generate XCG using the neural network's xtoXCnn function
+XCG = samples.neuralNet.xtoXCnn(xKLE).squeeze(1)
+XCG = XCG[:1]
 
-    # 1) Convert the sampled permeability tensor `x` to a 65×65 NumPy grid
-    x_init_grid = x[0].detach().cpu().numpy().reshape(65, 65)   # adjust reshape if needed
+print("xKLE size: ", xKLE.size())
 
-    # 2) Map {-1,+1} flags back to physical permeabilities {0.1, 1.0}
-    if x_init_grid.max() <= 1.0 and x_init_grid.min() < 0.0:
-        k_init = np.where(x_init_grid > 0, 1.0, 0.1)
-    else:                                   # already in physical units
-        k_init = x_init_grid.copy()
+x_init_grid = x[0].detach().cpu().numpy().reshape(65, 65)   # adjust reshape if needed
 
-    # 3) High-fidelity Darcy solve
-    u_init      = solve_darcy(k_init)
-    u_init_grid = fem_solution_to_regular_grid(u_init)          # shape (65, 65)
+# 2) Map {-1,+1} flags back to physical permeabilities {0.1, 1.0}
+if x_init_grid.max() <= 1.0 and x_init_grid.min() < 0.0:
+    k_init = np.where(x_init_grid > 0, 1.0, 0.1)
+else:                                   # already in physical units
+    k_init = x_init_grid.copy()
 
-    # 4) Convert the pressure field to a torch tensor
-    rbfRefSol = torch.tensor(u_init_grid, dtype=torch.float32, device=device)
+# 3) High-fidelity Darcy solve
+u_init      = solve_darcy(k_init)
+u_init_grid = fem_solution_to_regular_grid(u_init)          # shape (65, 65)
 
-    # 5) Get RBF coefficients  →  this *is* the new y★
-    #    findRbfCoeffs expects (batch, H, W); add batch dim if needed
-    rbf_coeffs = pde.shapeFunc.findRbfCoeffs(rbfRefSol.unsqueeze(0)).squeeze(0)
+# 4) Convert the pressure field to a torch tensor
+rbfRefSol = torch.tensor(u_init_grid, dtype=torch.float32, device=device)
 
-    # 6) Over-write y_star for the rest of the pipeline
-    y_star = rbf_coeffs.detach()            # keep on the same device as before
+# 5) Get RBF coefficients  →  this *is* the new y★
+#    findRbfCoeffs expects (batch, H, W); add batch dim if needed
+rbf_coeffs = pde.shapeFunc.findRbfCoeffs(rbfRefSol.unsqueeze(0)).squeeze(0)
 
-    print("Re-defined y_star from clean FEM solution:")
-    print("    coefficient vector shape:", y_star.shape)
+# 6) Over-write y_star for the rest of the pipeline
+y_star = rbf_coeffs.detach()            # keep on the same device as before
 
-    y_samples = samples.neuralNet.forward(xKLE.to(device)).detach().cpu()
+print("Re-defined y_star from clean FEM solution:")
+print("    coefficient vector shape:", y_star.shape)
 
-    # Apply the trial solution transformation
-    # y = pde.shapeFunc.cTrialSolutionParallel(y.to(device)).cpu()
+y_samples = samples.neuralNet.forward(xKLE.to(device)).detach().cpu()
+ 
+plt.imshow(y_samples[0], cmap='viridis')
+plt.colorbar()
+plt.title("Observed y*")
+plt.savefig("observed_y.png")
+y_star=y_samples[0].to(device)
 
-    # # Reshape y to match the desired dimensions
-    # y = torch.reshape(y, [y.size(dim=0), pde.sgrid.size(dim=1), pde.sgrid.size(dim=2)]).detach().cpu()
-
-    # yys, yyMean= samples.samplePosteriorMvn(sampX, Nx=numOfTestSamples, Navg=Navg)
-
-    # yvalue= pde.shapeFunc.cTrialSolutionParallel(yys[0].to(device)).cpu()
-    
-    # Draw 100 ys for the current XCG
-    # print("y", yys.shape)
-
-    # y_samples = torch.tensor(samples.samplePosteriorMvn(x_test))
-
-    # y = pde.shapeFunc.cTrialSolutionParallel(y_samples).reshape(1, 1, 32 * 32)# Reshape y to match the desired dimensions
-    # y = torch.reshape(y, [y.size(dim=0), pde.sgrid.size(dim=1), pde.sgrid.size(dim=2)]).detach().cpu()    
-    plt.imshow(y_samples[0], cmap='viridis')
-    plt.colorbar()
-    plt.title("Observed y*")
-    plt.savefig("observed_y.png")
-    y_star=y_samples[0].to(device)
-    
-    print("shape:",y_samples.shape)  # Shape: (1000, 32, 32)
+print("shape:",y_samples.shape)  # Shape: (1000, 32, 32)
 
 # Initialize X as a 17x17 grid with ones
 X_init = torch.full((17, 17), 0.5, requires_grad=True)
 # # Draw one sample y from the distribution p(y | X)
-# y_draw = get_py_given_X_distribution(X_init, samples.neuralNet, samples.V, samples.globalSigma).sample()
 
-y_sample=pde.shapeFunc.cTrialSolutionParallel(y_star.to(device)).cpu()           # Reshape y to match the desired dimensions
-# y_sample = torch.reshape(y_sample, [y_sample.size(dim=0), pde.sgrid.size(dim=1), pde.sgrid.size(dim=2)]).detach().cpu()
-# Reshape and visualize the sampled y
+y_sample=pde.shapeFunc.cTrialSolutionParallel(y_star.to(device)).cpu()           
 y_sample_reshaped = torch.reshape(y_sample, [1, pde.sgrid.size(dim=1), pde.sgrid.size(dim=2)]).detach().cpu()
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
-# ### Load observed y_star from your dataset
-# with open("Y_samples.json", "r") as f:
-#     y_samples = torch.tensor(json.load(f)["ys"]).reshape(1, 1, 32 * 32).to(device)
-#     y_star = y_samples[0]
 
 ### Define the Gaussian Process Prior for X ###
 import torch
@@ -710,10 +679,6 @@ guide = AutoMultivariateNormal(bayes_inv_model.model)
 optimizer = Adam({"lr": 0.01})
 svi = SVI(bayes_inv_model.model, guide, optimizer, loss=Trace_ELBO())
 
-# # --- Load y_star as before ---
-# with open("Y_samples.json", "r") as f:
-#     y_samples = torch.tensor(json.load(f)["ys"]).reshape(1, 1, 32*32).to(device)
-#     y_star = y_samples[0]
 
 num_steps = 2000
 losses = []

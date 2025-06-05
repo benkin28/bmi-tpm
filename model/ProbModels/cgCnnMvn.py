@@ -199,21 +199,6 @@ class probabModel:
 
         absRes = torch.abs(res)
         likelihood = - 1./2./self.sigma_r * torch.sum(torch.mean(absRes, dim=0), dim=0) #Monte Carlo approx
-        #first term of ELBO
-        yField = self.pde.shapeFunc.cTrialSolutionParallel(y)
-
-        # # Convert yField to a list and save to a JSON file
-        # yField_list = yField.detach().cpu().numpy().tolist()
-        # with open('y_solution.json', 'w') as json_file:
-        #     json.dump(yField_list, json_file)
-
-        # # Plot yField and save the plot
-        # plt.plot(np.array(yField_list).flatten())
-        # plt.xlabel('Index')
-        # plt.ylabel('Value')
-        # plt.title('yField Plot')
-        # plt.savefig('yField_plot.png')
-        # plt.close()
 
 
         loss = likelihood + logProb + entropy

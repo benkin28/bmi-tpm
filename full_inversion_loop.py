@@ -221,12 +221,6 @@ W_grid = 65, 65  # Adjust based on your data
 with open('data.json', 'r') as file:
     data = json.load(file)
 
-with open('posterior_X_mean.json', 'r') as file2:
-    posterior_X_mean = json.load(file2)
-    # print("posterior_X_mean:", posterior_X_mean.size())    
-    posterior_X_mean = posterior_X_mean['X_mean']
-    posterior_X_mean = torch.tensor(posterior_X_mean, dtype=torch.float32, device=device)
-
 fineGrids = data['x'][:selectionIndex]     # (N, H_fg, W_fg)
 coarseGrids = data['XCG'][:selectionIndex] # (N, H_cg, W_cg)
 print(len(coarseGrids))
@@ -362,33 +356,29 @@ print("Model loaded successfully.")
 # Load observed y values from JSON
 
 for i in range(100):
-    with open("Y_samples.json", "r") as f:
-        x_init_grid = fineGrids[-i].detach().cpu().numpy().reshape(65, 65) 
-        k_init = x_init_grid.copy()
+    x_init_grid = fineGrids[-i].detach().cpu().numpy().reshape(65, 65) 
+    k_init = x_init_grid.copy()
 
-        # 3) High-fidelity Darcy solve
-        u_init      = solve_darcy(k_init)
-        u_init_grid = fem_solution_to_regular_grid(u_init)          # shape (65, 65)
+    # 3) High-fidelity Darcy solve
+    u_init      = solve_darcy(k_init)
+    u_init_grid = fem_solution_to_regular_grid(u_init)          # shape (65, 65)
 
-        # 4) Convert the pressure field to a torch tensor
-        rbfRefSol = torch.tensor(u_init_grid, dtype=torch.float32, device=device)
+    # 4) Convert the pressure field to a torch tensor
+    rbfRefSol = torch.tensor(u_init_grid, dtype=torch.float32, device=device)
 
-        # 5) Get RBF coefficients  →  this *is* the new y★
-        #    findRbfCoeffs expects (batch, H, W); add batch dim if needed
-        rbf_coeffs = pde.shapeFunc.findRbfCoeffs(rbfRefSol.unsqueeze(0)).squeeze(0)
+    # 5) Get RBF coefficients  →  this *is* the new y★
+    #    findRbfCoeffs expects (batch, H, W); add batch dim if needed
+    rbf_coeffs = pde.shapeFunc.findRbfCoeffs(rbfRefSol.unsqueeze(0)).squeeze(0)
 
-        # 6) Over-write y_star for the rest of the pipeline
-        y_star = rbf_coeffs.detach().reshape(1, 1024)  # reshape to [1, 1024]
+    # 6) Over-write y_star for the rest of the pipeline
+    y_star = rbf_coeffs.detach().reshape(1, 1024)  # reshape to [1, 1024]
 
 
     # Initialize X as a 17x17 grid with ones
     X_init = torch.full((17, 17), 0.5, requires_grad=True)
-    # # Draw one sample y from the distribution p(y | X)
-    # y_draw = get_py_given_X_distribution(X_init, samples.neuralNet, samples.V, samples.globalSigma).sample()
 
-    y_sample=pde.shapeFunc.cTrialSolutionParallel(y_star.to(device)).cpu()           # Reshape y to match the desired dimensions
-    # y_sample = torch.reshape(y_sample, [y_sample.size(dim=0), pde.sgrid.size(dim=1), pde.sgrid.size(dim=2)]).detach().cpu()
-    # Reshape and visualize the sampled y
+    y_sample=pde.shapeFunc.cTrialSolutionParallel(y_star.to(device)).cpu()
+    
     y_sample_reshaped = torch.reshape(y_sample, [1, pde.sgrid.size(dim=1), pde.sgrid.size(dim=2)]).detach().cpu()
 
 
